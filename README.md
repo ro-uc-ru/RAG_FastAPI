@@ -83,4 +83,4 @@ GOOGLE-API-KEY = "Your Google API key goes here"
       - 🐍 __init__.py
       - 📋 sidebar.py
       - ⬆️ uploader.py
-  - 📁 **uploaded**/ (Where the file while be also uploaded and save it whithout any processing)
+  - 📁 **uploaded**/ (Where the file while be also uploaded and save it without any processing)
