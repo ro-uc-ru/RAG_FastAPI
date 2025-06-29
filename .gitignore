@@ -1,0 +1,31 @@
+# Entorno virtual
+.pdf_extractor/
+venv/
+
+# Archivos Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Configuración de entorno
+.env
+
+# Archivos de logs y temporales
+*.log
+*.tmp
+*.bak
+
+# Archivos y carpetas del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de subida de usuario
+src/uploaded/
+src/chromadb/
+
+# VSCode (opcional)
+.vscode/
+
+# Archivos de bases de datos locales
+*.db
+*.sqlite3
