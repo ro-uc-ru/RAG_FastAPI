@@ -20,8 +20,10 @@ __pycache__/
 Thumbs.db
 
 # Archivos de subida de usuario
-src/uploaded/
-src/chromadb/
+src/uploaded/*
+!src/uploaded/.gitkeep
+src/chromadb/*
+!src/chromadb/.gitkeep
 
 # VSCode (opcional)
 .vscode/
