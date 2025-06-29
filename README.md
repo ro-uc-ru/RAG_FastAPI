@@ -38,7 +38,7 @@ flowchart TD
 1. Create a Python venv and install dependencies
 
 ```bash
-cd RAG_FastAPI
+cd RAG_FastAPI #on the root of the project
 python3 -m venv .pdf_extractor
 source .pdf_extractor/bin/activate
 pip3 install -r requirements.txt
@@ -60,6 +60,11 @@ GOOGLE-API-KEY = "Your Google API key goes here"
   ```bash
   cd src/backend/api
   uvicorn main:app --reload --port 8080
+  ```
+  or also
+  ```bash
+  cd RAG_FastAPI #on the root of the project
+  PYTHONPATH=src uvicorn backend.api.main:app --port 8080
   ```
 
 --- 
