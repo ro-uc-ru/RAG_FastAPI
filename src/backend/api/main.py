@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from backend.rag.tools import process_pdf
 from backend.rag.agent import run_query_with_graph
 import os
+from logger import logger
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -12,6 +13,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app = FastAPI(
     title = "PDF RAG Assistant"
 )
+logger.info("Starting API")
 
 @app.get('/')
 async def root() -> dict[str, int]:
@@ -19,6 +21,7 @@ async def root() -> dict[str, int]:
 
 @app.post('/post-pdf')
 async def upload_pdf(file: UploadFile) -> dict[str, str]:
+    logger.info("Posting PDF")
     try:
         file_path = f"{UPLOAD_FOLDER}{file.filename}"
         with open(file_path, 'wb') as f:
@@ -29,11 +32,13 @@ async def upload_pdf(file: UploadFile) -> dict[str, str]:
             process_pdf(path = file_path)
 
             #if succesfully uploaded, we let the user know it
+            logger.info("PDF uploaded succesfully")
             return {
                 "message": f"File {file.filename} uploaded succesfully in {UPLOAD_FOLDER} folder"
                 }
         
     except Exception as e:
+        logger.error("PDF not uploaded, error while uploading")
         return {
             "message": str(e)
             }
@@ -45,6 +50,7 @@ class Query(BaseModel):
 
 @app.post('/query')
 async def query_rag(query: Query):
+    logger.info("Asking the agent about the PDF")
     response =  run_query_with_graph(query.query)
     return {
         "answer": response
